@@ -16,7 +16,7 @@
 //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
 //
 // Returns an associative array.
-(function($) { "use strict";  
+(function($) { "use strict";
 
   FormData = function(element) {
     var $form = $(element);
@@ -64,6 +64,7 @@
           return $formData; };
 
     return {
+      // Public Methods
       name: formName(),
       inputs: gatherInputs()
     };
