@@ -102,6 +102,7 @@
 
           // Submit the event
           submitEvent($formData.name, $formData.inputs);
+          $this.unbind('submit');
 
           // Delay form submission, to ensure GA event is tracked.
           setTimeout(function() {
