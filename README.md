@@ -53,7 +53,7 @@ jQuery (tested with 1.10)
 
 ### Tests
 
-Uses [Jasmine](http://pivotal.github.io/jasmine/) for testing.
+Uses [Jasmine](http://pivotal.github.io/jasmine/) and the [Standalone Release](https://github.com/pivotal/jasmine/downloads) for testing.
 
 ### Author
 
