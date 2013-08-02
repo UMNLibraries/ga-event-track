@@ -38,7 +38,7 @@
     //
     //    <form name="mncatplus" class="ga-track"...>
     //    <form> (Look for nearest parent with id attribute)
-    //    => {form: mncatplus}
+    //    => {form: "mncatplus"}
     var formName = function() {
           var $name = $form.attr('name') || $($form.parents('[id]')[0]).attr('id');
           return {'form': $name}; };
@@ -54,7 +54,7 @@
     //      <input type="radio" name="type" value="title"/>
     //      <input type="radio" name="type" value="author"/>
     //    </form>
-    //    => {request: "hemingway", image: "Go", type: "author"} 
+    //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"} 
     var gatherInputs = function() {
           var $formData = {};
           $(':input', $form).each(function() {
