@@ -50,3 +50,7 @@ jQuery
         <td>{form: "mncatplus", request: "hemingway", image: "Go", type: "author"}</td>
     </tbody>
   </table>
+
+### Tests
+
+Uses [Jasmine](http://pivotal.github.io/jasmine/) for testing.
