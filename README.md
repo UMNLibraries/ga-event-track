@@ -5,7 +5,7 @@ A jQuery plugin to capture form input values during the onsubmit event and send 
 
 ### Dependencies
 
-jQuery
+jQuery (tested with 1.10)
 
 ### Usage
 
@@ -54,3 +54,11 @@ jQuery
 ### Tests
 
 Uses [Jasmine](http://pivotal.github.io/jasmine/) for testing.
+
+### Author
+
+Eric Larson
+
+### Copyright and License
+
+Copyright (c) 2013 Regents of the University of Minnesota - The MIT License (MIT)
