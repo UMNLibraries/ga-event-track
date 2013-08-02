@@ -14,6 +14,17 @@ describe("Forms", function() {
         expect(spyEvent).toHaveBeenTriggered();
       });
     });
+
+    it("should push event to GA", function(){
+      var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
+      expect(_gaq).toEqual([]);
+      var label = ['_trackEvent', 'Forms', 'Submit', {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}]
+      $('form.ga-track').submit(function(event){
+        event.preventDefault();
+        expect(spyEvent).toHaveBeenTriggered();
+        expect(_gaq).toEqual(label);        
+      });
+    });
   });
 
   describe("when multi form has been loaded", function() {
