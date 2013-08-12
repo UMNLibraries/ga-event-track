@@ -75,7 +75,7 @@
     return $('form.ga-track').each(function(idx, element) {
       // Private: Submit the event to GA for tracking
       var submitEvent = function(name, inputs) {
-            if (JSON.stringify) {
+            if (JSON && JSON.stringify) {
               var $ga_label = JSON.stringify($.extend(name, inputs));
 
               // Push the event to GA
