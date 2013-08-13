@@ -75,14 +75,20 @@
     return $('form.ga-track').each(function(idx, element) {
       // Private: Submit the event to GA for tracking
       var submitEvent = function(name, inputs) {
-            if (JSON && JSON.stringify) {
-              var $ga_label = JSON.stringify($.extend(name, inputs));
 
-              // Push the event to GA
-              _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
-              return true;
-            }
-            return false; };
+        try {
+          if (JSON && JSON.stringify) {
+            var $ga_label = JSON.stringify($.extend(name, inputs));
+
+            // Push the event to GA
+            _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
+            return true;
+          }
+        } 
+        catch(error) {
+          return false; 
+        }
+      };  
 
       // Event Handler: Process the submit event
       // 
