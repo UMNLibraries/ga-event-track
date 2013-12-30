@@ -1,0 +1,25 @@
+{
+    "name": "ga-track-form-submit"
+  , "description": "A jQuery plugin to capture form input values during the onsubmit event and send the data to Google Analytics as a tracked event."
+  , "version": "1.0.0"
+  , "keywords": ["jquery", "google", "analytics", "Google Analytics"]
+  , "homepage": "https://github.umn.edu/Libraries/ga-track-form-submit"
+  , "author": {
+      "name": "Eric Larson"
+    , "email": "ewlarson@umn.edu"
+    , "url": "lib.umn.edu"
+  }
+  , "scripts": { "test": "grunt test" }
+  , "repository": {
+      "type": "git"
+    , "url": "git@github.umn.edu:Libraries/ga-track-form-submit.git"
+  }
+  , "bugs": {
+     "url": "https://github.umn.edu/Libraries/ga-track-form-submit/issues"
+  }
+  , "license": "MIT"
+  , "devDependencies": {
+      "grunt": "~0.4.1"
+    , "grunt-contrib-jasmine": "~0.5.1"
+  }
+}

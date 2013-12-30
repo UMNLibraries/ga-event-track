@@ -5,7 +5,7 @@ A jQuery plugin to capture form input values during the onsubmit event and send 
 
 ### Dependencies
 
-* jQuery (tested with 1.10)
+* jQuery (tested with 1.10.2)
 * Google Analytics Web Tracking - ga.js
 
 ### Usage
@@ -54,7 +54,17 @@ A jQuery plugin to capture form input values during the onsubmit event and send 
 
 ### Tests
 
-Uses [Jasmine](http://pivotal.github.io/jasmine/) and the [Standalone Release](https://github.com/pivotal/jasmine/downloads) for testing.
+Install the project's dependencies
+
+  ```bash
+    npm install
+  ```
+
+Run the test suite
+
+  ```bash
+    grunt test
+  ```
 
 ### Author
 
