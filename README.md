@@ -5,11 +5,7 @@ A jQuery plugin to capture form input values during the onsubmit event and send 
 
 ### Dependencies
 
-<<<<<<< HEAD
 * jQuery (tested with 1.10.2)
-=======
-* jQuery (tested with 1.10)
->>>>>>> master
 * Google Analytics Web Tracking - ga.js
 
 ### Usage
