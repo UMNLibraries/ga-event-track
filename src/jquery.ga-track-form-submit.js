@@ -18,7 +18,7 @@
 // Returns an associative array.
 (function($) { "use strict";
 
-  FormData = function(element) {
+  window.GaTrackFormData = function(element) {
     var $form = $(element);
 
     // Private: Capture input name, or default to input type
@@ -104,7 +104,7 @@
 
           event.preventDefault();
           var $this = $(this);
-          var $formData = new FormData($this);
+          var $formData = new GaTrackFormData($this);
 
           // Submit the event
           submitEvent($formData.name, $formData.inputs);
