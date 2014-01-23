@@ -30,7 +30,7 @@
           if (input.attr('type') === 'radio') {
             return $('input[name=' + inputName(input) + ']:radio:checked').val();
           } 
-          return input.attr('value'); };
+          return input.val(); };
 
     // Private: Gather form name
     //
