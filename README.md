@@ -1,10 +1,10 @@
-ga-track-form-submit
+ga-event-track
 ====================
 
-[![Build Status](https://travis-ci.org/UMNLibraries/ga-track-form-submit.png?branch=master)](https://travis-ci.org/UMNLibraries/ga-track-form-submit)
-[![Code Climate](https://codeclimate.com/github/UMNLibraries/ga-track-form-submit.png)](https://codeclimate.com/github/UMNLibraries/ga-track-form-submit)
+[![Build Status](https://travis-ci.org/UMNLibraries/ga-event-track.png?branch=master)](https://travis-ci.org/UMNLibraries/ga-event-track)
+[![Code Climate](https://codeclimate.com/github/UMNLibraries/ga-event-track.png)](https://codeclimate.com/github/UMNLibraries/ga-event-track)
 
-A jQuery plugin to capture form input values during the onsubmit event and send the data to Google Analytics as a tracked event.
+A jQuery plugin to capture DOM events and send data regarding the event to Google Analytics as a tracked event.
 
 ### Dependencies
 
@@ -14,15 +14,15 @@ A jQuery plugin to capture form input values during the onsubmit event and send 
 ### Install
 
 ```
-bower install ga-track-form-submit
+bower install ga-event-track
 ```
 
 ### Usage
 
-1. Add the src/jquery.ga-track-form-submit.min.js file to your website
+1. Add the src/jquery.ga-event-track.min.js file to your website
 
   ```html
-  <script src="jquery.ga-track-form-submit.min.js"></script>
+  <script src="jquery.ga-event-track.min.js"></script>
   ```
 
 2. Add an attribute class "ga-track" to any form you wish to track
@@ -81,4 +81,4 @@ Eric Larson
 
 ### Copyright and License
 
-Copyright (c) 2013 Regents of the University of Minnesota - The MIT License (MIT)
+Copyright (c) 2013-2014 Regents of the University of Minnesota - The MIT License (MIT)
