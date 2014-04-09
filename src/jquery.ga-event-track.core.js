@@ -12,7 +12,15 @@
 // Example
 //
 //    $.ga_event_track('forms');
-//    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
+//    form.ga-track.onSubmit => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
+//
+//    $.ga_event_track('links');
+//    a.onClick => {"webpage":""
+//        "media":"large",
+//        "href":"/services/borrowing",
+//        "text":"Borrowing Privileges",
+//        "parents":"header-nav|primary-nav|services-nav",
+//        "date":1396469586280}
 
 var GaEventTrack = (function() {
   var _events = ['forms', 'links'];

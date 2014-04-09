@@ -12,7 +12,7 @@
 // Example
 //
 //    $.ga_event_track('links');
-//    => {"webpage":""
+//    => {"webpage":"/",
 //        "media":"large",
 //        "href":"/services/borrowing",
 //        "text":"Borrowing Privileges",

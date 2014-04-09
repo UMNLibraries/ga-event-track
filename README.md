@@ -37,7 +37,7 @@ bower install ga-event-track
   </form>
   ```
 
-3. Initialize the tracking via $('form.ga-track').ga_track_form_submit();
+3. Initialize form tracking via:
 
   ```html
   <script>
@@ -58,6 +58,36 @@ bower install ga-event-track
         <td>Form</td>
         <td>Submit</td>
         <td>{form: "mncatplus", request: "hemingway", image: "Go", type: "author"}</td>
+    </tbody>
+  </table>
+
+5. Initialize link tracking via:
+
+  ```html
+  <script>
+    $.ga_event_track('links');
+  </script>
+  ```
+
+6. When the onclick event is triggered, you'll capture:
+
+  <table>
+    <thead>
+      <th>Event Category</th>
+      <th>Event Action</th>
+      <th>Event Label</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Links</td>
+        <td>Click</td>
+        <td>
+          {"webpage":"/",
+          "media":"large",
+          "href":"/services/borrowing",
+          "text":"Borrowing Privileges",
+          "parents":"header-nav|primary-nav|services-nav",
+          "date":1396469586280}</td>
     </tbody>
   </table>
 
