@@ -33,13 +33,13 @@ describe("Links", function() {
     beforeEach(function() {
       loadFixtures('links.html');
       $('a#borrowing').click();
+      
+      // Parse JSON data
+      labelHash = JSON.parse(_gaq[1][3]);
+      clickHash = JSON.parse(clickData[3]);
     });
 
     it("should capture label data", function(){
-      // Parse JSON data
-      var labelHash = JSON.parse(_gaq[1][3]);
-      var clickHash = JSON.parse(clickData[3]);
-
       // Should have same array length
       expect(_gaq[1].length).toEqual(clickData.length);
 
@@ -48,10 +48,6 @@ describe("Links", function() {
     });
 
     it("should match example data", function(){
-      // Parse JSON data
-      var labelHash = JSON.parse(_gaq[1][3]);
-      var clickHash = JSON.parse(clickData[3]);
-
       delete(labelHash['date']);
 
       $.each(labelHash, function(key,value){ 

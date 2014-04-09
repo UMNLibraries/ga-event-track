@@ -4,7 +4,7 @@ describe("Forms", function() {
   describe("when book form has been submitted", function() {
     beforeEach(function() {
       loadFixtures('book_form.html');
-      $('form.ga-track').ga_track_form_submit();
+      $.ga_event_track('forms');
     });
     
     it("should capture event", function() {
@@ -30,7 +30,7 @@ describe("Forms", function() {
   describe("when multi form has been loaded", function() {
     beforeEach(function() {
       loadFixtures('multi_form.html');
-      $('form.ga-track').ga_track_form_submit();
+      $.ga_event_track('forms');
     });
       
     it("should have two forms to observe", function() {
@@ -54,7 +54,7 @@ describe("Forms", function() {
   describe("when no forms to track has been loaded", function() {
     beforeEach(function() {
       loadFixtures('no_forms_to_track.html');
-      $('form.ga-track').ga_track_form_submit();
+      $.ga_event_track('forms');
     });
       
     it("should have no forms to observe", function() {

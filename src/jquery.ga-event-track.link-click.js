@@ -20,9 +20,9 @@
 //        "date":1396469586280}
 //
 // Returns an associative array.
-(function($) { "use strict";
+(function($,GaEventTrack) { "use strict";
 
-  window.GaTrackLinkData = function(element) {
+  GaEventTrack.LinkClick = function(element) {
     var $link = $(element);
 
     // Private: Capture the current URL
@@ -62,50 +62,52 @@
   }
 
   // Public: Init ga link tracking
-  $.fn.ga_track_link_click = function () {
-    return $('a').each(function(idx, element) {
+  $.ga_event_track = function (event) {
+    if ($.inArray(event,GaEventTrack._events) && event === 'links') {
+      return $('a').each(function(idx, element) {
 
-      // Private: Submit the event to GA for tracking
-      var submitEvent = function(webpage,media,href,text,parents,date) {
+        // Private: Submit the event to GA for tracking
+        var submitEvent = function(webpage,media,href,text,parents,date) {
 
-        try {
-          if (JSON && JSON.stringify) {
-            var $ga_label = JSON.stringify($.extend(webpage,media,href,text,parents,date));
+          try {
+            if (JSON && JSON.stringify) {
+              var $ga_label = JSON.stringify($.extend(webpage,media,href,text,parents,date));
 
-            // Push the event to GA
-            _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
-            return true;
+              // Push the event to GA
+              _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
+              return true;
+            }
+          } 
+          catch(error) {
+            return false; 
           }
-        } 
-        catch(error) {
-          return false; 
-        }
-      };  
+        };  
 
-      // Event Handler: Process the click event
-      // 
-      // Steps
-      //
-      //    1) Gather Data - all link values
-      //    2) Push Event to GA
-      //
-      // Returns the link click event. 
-      $(element)
-        .click(function(event) {
+        // Event Handler: Process the click event
+        // 
+        // Steps
+        //
+        //    1) Gather Data - all link values
+        //    2) Push Event to GA
+        //
+        // Returns the link click event. 
+        $(element)
+          .click(function(event) {
 
-          var $this = $(this);
-          var $linkData = new GaTrackLinkData($this);
+            var $this = $(this);
+            var $linkData = new GaEventTrack.LinkClick($this);
 
-          // Submit the event
-          submitEvent(
-            $linkData.webpage,
-            $linkData.media,
-            $linkData.href,
-            $linkData.text,
-            $linkData.parents,
-            $linkData.date
-          );
-        });
-    });
+            // Submit the event
+            submitEvent(
+              $linkData.webpage,
+              $linkData.media,
+              $linkData.href,
+              $linkData.text,
+              $linkData.parents,
+              $linkData.date
+            );
+          });
+      });
+    };
   };
-}(jQuery));
+}(jQuery,GaEventTrack));
