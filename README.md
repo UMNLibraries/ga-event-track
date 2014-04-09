@@ -41,7 +41,7 @@ bower install ga-event-track
 
   ```html
   <script>
-    $('form.ga-track').ga_track_form_submit();
+    $.ga_event_track('forms');
   </script>
   ```
 
