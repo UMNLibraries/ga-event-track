@@ -11,7 +11,7 @@
 //
 // Example
 //
-//    $.ga_track_link_click();
+//    $.ga_event_track('links');
 //    => {"webpage":""
 //        "media":"large",
 //        "href":"/services/borrowing",

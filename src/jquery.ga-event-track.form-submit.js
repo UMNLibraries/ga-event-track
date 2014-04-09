@@ -12,7 +12,7 @@
 //
 // Example
 //
-//    $('form.ga-track').ga_track_form_submit();
+//    $.ga_event_track('forms');
 //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
 //
 // Returns an associative array.
