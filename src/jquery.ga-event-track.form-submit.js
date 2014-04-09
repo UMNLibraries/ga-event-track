@@ -12,13 +12,13 @@
 //
 // Example
 //
-//    $('form.ga-track').ga_track_form_submit();
+//    $.ga_event_track('forms');
 //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
 //
 // Returns an associative array.
-(function($) { "use strict";
+(function($,GaEventTrack) { "use strict";
 
-  window.GaTrackFormData = function(element) {
+  GaEventTrack.FormSubmit = function(element) {
     var $form = $(element);
 
     // Private: Capture input name, or default to input type
@@ -71,50 +71,52 @@
   }
 
   // Public: Init ga form tracking
-  $.fn.ga_track_form_submit = function () {
-    return $('form.ga-track').each(function(idx, element) {
-      // Private: Submit the event to GA for tracking
-      var submitEvent = function(name, inputs) {
+  $.ga_event_track = function (event) {
+    if ($.inArray(event,GaEventTrack._events) && event === 'forms') {
+      return $('form.ga-track').each(function(idx, element) {
+        // Private: Submit the event to GA for tracking
+        var submitEvent = function(name, inputs) {
 
-        try {
-          if (JSON && JSON.stringify) {
-            var $ga_label = JSON.stringify($.extend(name, inputs));
+          try {
+            if (JSON && JSON.stringify) {
+              var $ga_label = JSON.stringify($.extend(name, inputs));
 
-            // Push the event to GA
-            _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
-            return true;
+              // Push the event to GA
+              _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
+              return true;
+            }
+          } 
+          catch(error) {
+            return false; 
           }
-        } 
-        catch(error) {
-          return false; 
-        }
-      };  
+        };  
 
-      // Event Handler: Process the submit event
-      // 
-      // Steps
-      //
-      //    1) Gather Data - all form input elements names and values
-      //    2) Push Event to GA
-      //    3) Delay submit for 0.5s to ensure GA can track event
-      //
-      // Returns the form submit event. 
-      $(element)
-        .submit(function(event) {
+        // Event Handler: Process the submit event
+        // 
+        // Steps
+        //
+        //    1) Gather Data - all form input elements names and values
+        //    2) Push Event to GA
+        //    3) Delay submit for 0.5s to ensure GA can track event
+        //
+        // Returns the form submit event. 
+        $(element)
+          .submit(function(event) {
 
-          event.preventDefault();
-          var $this = $(this);
-          var $formData = new GaTrackFormData($this);
+            event.preventDefault();
+            var $this = $(this);
+            var $formData = new GaEventTrack.FormSubmit($this);
 
-          // Submit the event
-          submitEvent($formData.name, $formData.inputs);
-          $this.unbind('submit');
+            // Submit the event
+            submitEvent($formData.name, $formData.inputs);
+            $this.unbind('submit');
 
-          // Delay form submission, to ensure GA event is tracked.
-          setTimeout(function() {
-            $this.submit();
-          }, 500);
-        });
-    });
+            // Delay form submission, to ensure GA event is tracked.
+            setTimeout(function() {
+              $this.submit();
+            }, 500);
+          });
+      });
+    };
   };
-}(jQuery));
+}(jQuery,GaEventTrack));

@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/ga-track-link-click/src/jquery.ga-event-track.core.js"></script>
+    <script src="/ga-track-link-click/src/jquery.ga-event-track.link-click.js"></script>
+    <script src="/ga-track-link-click/spec/javascripts/vendor/ga_spoof.js"></script>
+  </head>
+  <body data-media="large">
+    <header>
+      <div id="header-nav">
+        <nav id="primary-nav">
+          <ul>
+            <li>
+              <a id="services" class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Services
+                <b class="caret"></b>
+              </a>
+              <ul id="services-nav">
+                <li role="presentation">
+                  <a id="borrowing" href="/services/borrowing">Borrowing Privileges</a>
+                </li>
+                <li role="presentation">
+                  <a href="https://umn.illiad.oclc.org/illiad/logon.html">Interlibrary Loan (ILL)</a>
+                </li>
+                <li class="divider" role="presentation"></li>
+                <li role="presentation">
+                  <a href="/services">&gt;&gt; More</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section id="main">
+    </section>
+
+    <footer>
+    </footer>
+    <script>
+      $.ga_event_track('links');
+    </script>
+  </body>
+</html>

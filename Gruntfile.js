@@ -9,7 +9,7 @@ module.exports = function (grunt) {
       pkg: grunt.file.readJSON('package.json')
 
     , jasmine: {
-        src: "src/jquery.ga-track-form-submit.js"
+        src: "src/jquery.ga-event-track.*.js"
       , options: {
           specs: "spec/*.js"
         , vendor: "spec/javascripts/vendor/*.js"
