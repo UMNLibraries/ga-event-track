@@ -27,28 +27,28 @@
 
     // Private: Capture the current URL
     var webpage = function() {
-      return {'webpage': $(location).attr('pathname')} };
+      return {'webpage': $(location).attr('pathname')}; };
 
     // Private: Capture active media query
     var media = function() {
-      return {'media': $('body').data('media')} };
+      return {'media': $('body').data('media')}; };
 
     // Private: Capture anchor href
     var linkHref = function() {
-      return {'href': $($link).attr('href')} };
+      return {'href': $($link).attr('href')}; };
 
     // Private: Capture anchor text value
     var linkText = function() {
-      return {'text': $.trim($($link).text())} };
+      return {'text': $.trim($($link).text())}; };
 
     // Private: Capture anchor parent attr ids
     var linkParents = function() {
       return {'parents': $.map($($link).parents(), function(v,i){ 
-        return $(v).attr('id')}).reverse().join('|') }};
+        return $(v).attr('id')}).reverse().join('|') }; };
 
     // Private: Capture event timestamp
     var eventDate = function() {
-      return {'date': $.now()} };
+      return {'date': $.now()}; };
 
     return {
       // Public Methods
@@ -59,7 +59,7 @@
       parents: linkParents(),
       date: eventDate()
     };
-  }
+  };
 
   // Public: Init ga link tracking
   $.ga_event_track = function (event) {
@@ -108,6 +108,6 @@
             );
           });
       });
-    };
+    }
   };
 }(jQuery,GaEventTrack));

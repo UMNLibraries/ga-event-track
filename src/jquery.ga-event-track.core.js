@@ -31,5 +31,5 @@ var GaEventTrack = (function() {
     _events: _events,
     FormSubmit: FormSubmit,
     LinkClick: LinkClick
-  }
+  };
 }(GaEventTrack));

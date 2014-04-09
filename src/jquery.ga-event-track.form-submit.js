@@ -68,7 +68,7 @@
       name: formName(),
       inputs: gatherInputs()
     };
-  }
+  };
 
   // Public: Init ga form tracking
   $.ga_event_track = function (event) {
@@ -117,6 +117,6 @@
             }, 500);
           });
       });
-    };
+    }
   };
 }(jQuery,GaEventTrack));
