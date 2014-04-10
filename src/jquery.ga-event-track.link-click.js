@@ -34,11 +34,11 @@
       return $('body').data('media'); };
 
     // Private: Capture anchor href
-    var href = function() {
+    var linkHref = function() {
       return $($link).attr('href'); };
 
     // Private: Capture anchor text value
-    var text = function() {
+    var linkText = function() {
       return $.trim($($link).text()); };
 
     // Private: Capture anchor parent attr ids
@@ -58,8 +58,8 @@
       // Public Methods
       webpage: webpage(),
       media: media(),
-      href: href(),
-      text: text(),
+      href: linkHref(),
+      text: linkText(),
       parents: parents(),
       date: date()
     };
@@ -75,10 +75,9 @@
 
           try {
             if (JSON && JSON.stringify) {
-              var $ga_label = JSON.stringify($.extend(linkData));
+              var $ga_label = JSON.stringify(linkData);
 
               // Push the event to GA
-              var _gaq = _gaq || [];
               _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
               return true;
             }
@@ -97,7 +96,11 @@
         //
         // Returns the link click event. 
         $(element)
-          .click(function() {
+          .click(function(event) {
+            event.stopPropagation();
+            var $this = $(this);
+            $this.unbind('click');
+
             var $linkData = new GaEventTrack.LinkClick($(this));
 
             // Submit the event data
