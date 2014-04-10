@@ -43,11 +43,11 @@
 
     // Private: Capture anchor parent attr ids
     var parents = function() {
-      return $.map($($link).parents(), function(v,i){ 
+      return $.map($($link).parents(), function(v){ 
         return $(v).attr('id');
       })
         .reverse()
-        .join('|')
+        .join('|');
       };
 
     // Private: Capture event timestamp
@@ -97,10 +97,10 @@
         //
         // Returns the link click event. 
         $(element)
-          .click(function(event) {
+          .click(function() {
             var $linkData = new GaEventTrack.LinkClick($(this));
 
-            // Submit the event
+            // Submit the event data
             submitEvent($linkData);
           });
       });
