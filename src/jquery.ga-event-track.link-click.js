@@ -78,6 +78,7 @@
               var $ga_label = JSON.stringify(linkData);
 
               // Push the event to GA
+              var _gaq = _gaq || [];
               _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
               return true;
             }
