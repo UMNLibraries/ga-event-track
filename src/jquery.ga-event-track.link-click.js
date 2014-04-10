@@ -44,7 +44,11 @@
     // Private: Capture anchor parent attr ids
     var parents = function() {
       return $.map($($link).parents(), function(v,i){ 
-        return $(v).attr('id')}).reverse().join('|'); };
+        return $(v).attr('id');
+      })
+        .reverse()
+        .join('|')
+      };
 
     // Private: Capture event timestamp
     var date = function() {
