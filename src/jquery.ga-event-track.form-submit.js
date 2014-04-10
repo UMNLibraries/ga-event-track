@@ -71,8 +71,8 @@
   };
 
   // Public: Init ga form tracking
-  $.ga_event_track = function (event) {
-    if ($.inArray(event,GaEventTrack._events) && event === 'forms') {
+  $.ga_event_track_forms = function (event) {
+    if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'forms') {
       return $('form.ga-track').each(function(idx, element) {
         // Private: Submit the event to GA for tracking
         var submitEvent = function(name, inputs) {
@@ -82,7 +82,6 @@
               var $ga_label = JSON.stringify($.extend(name, inputs));
 
               // Push the event to GA
-              var _gaq = _gaq || [];
               _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
               return true;
             }
@@ -105,13 +104,16 @@
           .submit(function(event) {
 
             event.preventDefault();
+            event.stopPropagation();
             var $this = $(this);
-            var $formData = new GaEventTrack.FormSubmit($this);
-
-            // Submit the event
-            submitEvent($formData.name, $formData.inputs);
             $this.unbind('submit');
 
+            // Capture the data
+            var $formData = new GaEventTrack.FormSubmit($this);
+
+            // Submit the event data
+            submitEvent($formData.name, $formData.inputs);
+            
             // Delay form submission, to ensure GA event is tracked.
             setTimeout(function() {
               $this.submit();

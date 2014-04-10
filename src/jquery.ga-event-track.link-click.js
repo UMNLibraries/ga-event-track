@@ -66,8 +66,10 @@
   };
 
   // Public: Init ga link tracking
-  $.ga_event_track = function (event) {
-    if ($.inArray(event,GaEventTrack._events) && event === 'links') {
+  $.ga_event_track_links = function (event) {    
+    if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'links') {
+      console.log('Track Links')
+
       return $('a').each(function(idx, element) {
 
         // Private: Submit the event to GA for tracking
@@ -78,7 +80,6 @@
               var $ga_label = JSON.stringify(linkData);
 
               // Push the event to GA
-              var _gaq = _gaq || [];
               _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
               return true;
             }
@@ -98,14 +99,22 @@
         // Returns the link click event. 
         $(element)
           .click(function(event) {
+
+            event.preventDefault();
             event.stopPropagation();
             var $this = $(this);
             $this.unbind('click');
 
-            var $linkData = new GaEventTrack.LinkClick($(this));
+            // Capture the data
+            var $linkData = new GaEventTrack.LinkClick($this);
 
             // Submit the event data
             submitEvent($linkData);
+            
+            // Delay link, to ensure GA event is tracked.
+            setTimeout(function() {
+              window.location = $this.attr('href');
+            }, 500);
           });
       });
     }

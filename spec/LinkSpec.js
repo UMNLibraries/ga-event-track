@@ -46,9 +46,9 @@ describe("Links", function() {
 
       // Should have same array length
 
-      console.error('labelHash:' + labelHash);
+      //console.error('labelHash:' + labelHash);
 
-      //expect(_gaq[0].length).toEqual(clickData.length);
+      expect(_gaq[0].length).toEqual(clickData.length);
 
       // Are Hash keys the same?
       expect(Object.keys(labelHash)).toEqual(Object.keys(clickHash));
