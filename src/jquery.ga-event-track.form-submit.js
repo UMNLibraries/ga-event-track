@@ -82,6 +82,7 @@
               var $ga_label = JSON.stringify($.extend(name, inputs));
 
               // Push the event to GA
+              var _gaq = _gaq || [];
               _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
               return true;
             }
