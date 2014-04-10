@@ -27,37 +27,37 @@
 
     // Private: Capture the current URL
     var webpage = function() {
-      return {'webpage': $(location).attr('pathname')}; };
+      return $(location).attr('pathname'); };
 
     // Private: Capture active media query
     var media = function() {
-      return {'media': $('body').data('media')}; };
+      return $('body').data('media'); };
 
     // Private: Capture anchor href
-    var linkHref = function() {
-      return {'href': $($link).attr('href')}; };
+    var href = function() {
+      return $($link).attr('href'); };
 
     // Private: Capture anchor text value
-    var linkText = function() {
-      return {'text': $.trim($($link).text())}; };
+    var text = function() {
+      return $.trim($($link).text()); };
 
     // Private: Capture anchor parent attr ids
-    var linkParents = function() {
-      return {'parents': $.map($($link).parents(), function(v,i){ 
-        return $(v).attr('id')}).reverse().join('|') }; };
+    var parents = function() {
+      return $.map($($link).parents(), function(v,i){ 
+        return $(v).attr('id')}).reverse().join('|'); };
 
     // Private: Capture event timestamp
-    var eventDate = function() {
-      return {'date': $.now()}; };
+    var date = function() {
+      return $.now(); };
 
     return {
       // Public Methods
       webpage: webpage(),
       media: media(),
-      href: linkHref(),
-      text: linkText(),
-      parents: linkParents(),
-      date: eventDate()
+      href: href(),
+      text: text(),
+      parents: parents(),
+      date: date()
     };
   };
 
@@ -67,11 +67,11 @@
       return $('a').each(function(idx, element) {
 
         // Private: Submit the event to GA for tracking
-        var submitEvent = function(webpage,media,href,text,parents,date) {
+        var submitEvent = function(linkData) {
 
           try {
             if (JSON && JSON.stringify) {
-              var $ga_label = JSON.stringify($.extend(webpage,media,href,text,parents,date));
+              var $ga_label = JSON.stringify($.extend(linkData));
 
               // Push the event to GA
               _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
@@ -93,19 +93,10 @@
         // Returns the link click event. 
         $(element)
           .click(function(event) {
-
-            var $this = $(this);
-            var $linkData = new GaEventTrack.LinkClick($this);
+            var $linkData = new GaEventTrack.LinkClick($(this));
 
             // Submit the event
-            submitEvent(
-              $linkData.webpage,
-              $linkData.media,
-              $linkData.href,
-              $linkData.text,
-              $linkData.parents,
-              $linkData.date
-            );
+            submitEvent($linkData);
           });
       });
     }
