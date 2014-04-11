@@ -21,7 +21,7 @@ describe("GaEventTrack.FormSubmit", function() {
     });
 
     it("should have a form name of mncatplus", function() {
-      expect(GaTrackFormData.name['form']).toEqual('mncatplus');
+      expect(GaTrackFormData.name).toEqual('mncatplus');
     });
     
     $.each(['request', 'image', 'type'], function(index, key){

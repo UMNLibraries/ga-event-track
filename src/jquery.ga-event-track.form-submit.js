@@ -41,7 +41,7 @@
     //    => {form: "mncatplus"}
     var formName = function() {
           var $name = $form.attr('name') || $($form.parents('[id]')[0]).attr('id');
-          return {'form': $name}; };
+          return $name; };
 
     // Private: For each input, gather name and value
     //
@@ -63,10 +63,15 @@
           });
           return $formData; };
 
+    // Private: Capture event timestamp
+    var date = function() {
+      return $.now(); };
+
     return {
       // Public Methods
       name: formName(),
-      inputs: gatherInputs()
+      inputs: gatherInputs(),
+      date: date()
     };
   };
 
@@ -75,11 +80,11 @@
     if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'forms') {
       return $('form.ga-track').each(function(idx, element) {
         // Private: Submit the event to GA for tracking
-        var submitEvent = function(name, inputs) {
+        var submitEvent = function(formData) {
 
           try {
             if (JSON && JSON.stringify) {
-              var $ga_label = JSON.stringify($.extend(name, inputs));
+              var $ga_label = JSON.stringify(formData);
 
               // Push the event to GA
               _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
@@ -112,7 +117,7 @@
             var $formData = new GaEventTrack.FormSubmit($this);
 
             // Submit the event data
-            submitEvent($formData.name, $formData.inputs);
+            submitEvent($formData);
             
             // Delay form submission, to ensure GA event is tracked.
             setTimeout(function() {
