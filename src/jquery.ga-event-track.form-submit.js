@@ -63,6 +63,10 @@
           });
           return $formData; };
 
+    // Private: Capture active media query
+    var media = function() {
+      return $('body').data('media'); };
+
     // Private: Capture event timestamp
     var date = function() {
       return $.now(); };
@@ -71,6 +75,7 @@
       // Public Methods
       name: formName(),
       inputs: gatherInputs(),
+      media: media(),
       date: date()
     };
   };
