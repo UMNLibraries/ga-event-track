@@ -68,9 +68,11 @@
   // Public: Init ga link tracking
   $.ga_event_track_links = function (event) {    
     if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'links') {
-      console.log('Track Links')
-
-      return $('a').each(function(idx, element) {
+      return $('a')
+        .not('.dropdown-toggle')
+        .not('[class^="chosen"]')
+        .not('[data-toggle^="tab"]')
+          .each(function(idx, element) {
 
         // Private: Submit the event to GA for tracking
         var submitEvent = function(linkData) {
