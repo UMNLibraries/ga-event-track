@@ -1,7 +1,7 @@
 // jQuery Plugin: Capture link values onclick event.
 //
 // Usage
-// 
+//
 //    Include this javascript file in your build.
 //    Initialize the event handler on your page.
 //
@@ -43,7 +43,7 @@
 
     // Private: Capture anchor parent attr ids
     var parents = function() {
-      return $.map($($link).parents(), function(v){ 
+      return $.map($($link).parents(), function(v){
         return $(v).attr('id');
       })
         .reverse()
@@ -66,7 +66,7 @@
   };
 
   // Public: Init ga link tracking
-  $.ga_event_track_links = function (event) {    
+  $.ga_event_track_links = function (event) {
     if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'links') {
       return $('a')
         .not('.dropdown-toggle')
@@ -82,23 +82,24 @@
               var $ga_label = JSON.stringify(linkData);
 
               // Push the event to GA
-              _gaq.push(['_trackEvent', 'Links', 'Click', $ga_label]);
+              // console.log($ga_label);
+              ga('send', 'event', 'Links', 'Click', $ga_label);
               return true;
             }
-          } 
-          catch(error) {
-            return false; 
           }
-        };  
+          catch(error) {
+            return false;
+          }
+        };
 
         // Event Handler: Process the click event
-        // 
+        //
         // Steps
         //
         //    1) Gather Data - all link values
         //    2) Push Event to GA
         //
-        // Returns the link click event. 
+        // Returns the link click event.
         $(element)
           .click(function(event) {
 
@@ -112,11 +113,11 @@
 
             // Submit the event data
             submitEvent($linkData);
-            
+
             // Delay link, to ensure GA event is tracked.
             setTimeout(function() {
               window.location = $this.attr('href');
-            }, 500);
+            }, 5000);
           });
       });
     }

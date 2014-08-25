@@ -6,7 +6,7 @@ describe("Forms", function() {
       loadFixtures('book_form.html');
       $.ga_event_track_forms('forms');
     });
-    
+
     it("should capture event", function() {
       var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
       $('form.ga-track').submit(function(event){
@@ -17,12 +17,13 @@ describe("Forms", function() {
 
     it("should push event to GA", function(){
       var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
-      expect(_gaq).toEqual([]);
+      expect(typeof ga === 'function').toBe(true);
+
       var label = ['_trackEvent', 'Forms', 'Submit', {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}]
       $('form.ga-track').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveBeenTriggered();
-        expect(_gaq).toEqual(label);        
+        expect(_gaq).toEqual(label);
       });
     });
   });
@@ -32,7 +33,7 @@ describe("Forms", function() {
       loadFixtures('multi_form.html');
       $.ga_event_track_forms('forms');
     });
-      
+
     it("should have two forms to observe", function() {
       expect($('form.ga-track').length).toEqual(2);
     });
@@ -56,7 +57,7 @@ describe("Forms", function() {
       loadFixtures('no_forms_to_track.html');
       $.ga_event_track_forms('forms');
     });
-      
+
     it("should have no forms to observe", function() {
       expect($('form.ga-track').length).toEqual(0);
     });

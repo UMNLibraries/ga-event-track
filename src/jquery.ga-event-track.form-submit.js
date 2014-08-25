@@ -1,7 +1,7 @@
 // jQuery Plugin: Capture input names and values onsubmit event.
 //
 // Usage
-// 
+//
 //    Include this javascript file in your build.
 //    Add the 'ga-track' class attribute to any form you wish to track.
 //    Initialize the event handler on your page.
@@ -24,12 +24,12 @@
     // Private: Capture input name, or default to input type
     var inputName = function(input) {
           return input.attr('name') || input.attr('type'); };
-    
+
     // Private: Capture input value, handle radio buttons properly
     var inputValue = function(input) {
           if (input.attr('type') === 'radio') {
             return $('input[name=' + inputName(input) + ']:radio:checked').val();
-          } 
+          }
           return input.val(); };
 
     // Private: Gather form name
@@ -54,7 +54,7 @@
     //      <input type="radio" name="type" value="title"/>
     //      <input type="radio" name="type" value="author"/>
     //    </form>
-    //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"} 
+    //    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
     var gatherInputs = function() {
           var $formData = {};
           $(':input', $form).each(function() {
@@ -92,24 +92,24 @@
               var $ga_label = JSON.stringify(formData);
 
               // Push the event to GA
-              _gaq.push(['_trackEvent', 'Forms', 'Submit', $ga_label]);
+              ga('send', 'event', 'Forms', 'Submit', $ga_label);
               return true;
             }
-          } 
-          catch(error) {
-            return false; 
           }
-        };  
+          catch(error) {
+            return false;
+          }
+        };
 
         // Event Handler: Process the submit event
-        // 
+        //
         // Steps
         //
         //    1) Gather Data - all form input elements names and values
         //    2) Push Event to GA
         //    3) Delay submit for 0.5s to ensure GA can track event
         //
-        // Returns the form submit event. 
+        // Returns the form submit event.
         $(element)
           .submit(function(event) {
 
@@ -123,7 +123,7 @@
 
             // Submit the event data
             submitEvent($formData);
-            
+
             // Delay form submission, to ensure GA event is tracked.
             setTimeout(function() {
               $this.submit();

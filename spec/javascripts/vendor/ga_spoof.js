@@ -1,1 +1,1 @@
-var _gaq = _gaq || [];
+var ga = ga || function(){};

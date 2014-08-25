@@ -1,8 +1,8 @@
 // LinkSpec
 var clickData = [
-  '_trackEvent', 
-  'Links', 
-  'Click', 
+  '_trackEvent',
+  'Links',
+  'Click',
   '{"webpage":"/ga-event-track/_SpecRunner.html","href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
   ];
 
@@ -11,7 +11,7 @@ describe("Links", function() {
     beforeEach(function() {
       loadFixtures('links.html');
     });
-    
+
     it("should capture event", function() {
       var spyEvent = spyOnEvent($('a#borrowing'), 'click');
       $('a#borrowing').click(function(event){
@@ -21,43 +21,43 @@ describe("Links", function() {
     });
 
     it("should push event to GA", function(){
-      // _gaq should start empty
-      expect(_gaq).toEqual([]);
-      // click event should populate _gaq
-      $('a#borrowing').click();
-      expect(_gaq).not.toEqual([]);
+      // ga should be a function
+      expect(typeof ga === 'function').toBe(true);
+
+      // click event should populate $linkData
+      var $linkData = GaEventTrack.LinkClick($('a#borrowing').click());
+      expect($linkData).not.toEqual([]);
     });
   });
 
   describe("link data", function() {
     beforeEach(function() {
       loadFixtures('links.html');
-      $('a#borrowing').click();
+
+      var $linkData = GaEventTrack.LinkClick($('a#borrowing').click());
 
       // Parse JSON data
-      labelHash = JSON.parse(_gaq[0][3]);
+      labelHash = JSON.stringify($linkData);
       clickHash = JSON.parse(clickData[3]);
     });
 
     it("should capture label data", function(){
       // Parse JSON data
-      labelHash = JSON.parse(_gaq[0][3]);
-      clickHash = JSON.parse(clickData[3]);
+      var $labelHash = JSON.parse(labelHash);
+      var $clickHash = JSON.parse(clickData[3]);
 
       // Should have same array length
-
-      //console.error('labelHash:' + labelHash);
-
-      expect(_gaq[0].length).toEqual(clickData.length);
+      expect($labelHash.length).toEqual($clickHash.length);
 
       // Are Hash keys the same?
-      expect(Object.keys(labelHash)).toEqual(Object.keys(clickHash));
+      expect(Object.keys($labelHash)).toEqual(Object.keys($clickHash));
     });
 
     it("should match example data", function(){
+      labelHash = JSON.parse(labelHash);
       delete(labelHash['date']);
 
-      $.each(labelHash, function(key,value){ 
+      $.each(labelHash, function(key,value){
         expect(labelHash[key]).toContain(clickHash[key]);
       });
     });
