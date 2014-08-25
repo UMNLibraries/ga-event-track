@@ -117,7 +117,7 @@
             // Delay link, to ensure GA event is tracked.
             setTimeout(function() {
               window.location = $this.attr('href');
-            }, 5000);
+            }, 250);
           });
       });
     }

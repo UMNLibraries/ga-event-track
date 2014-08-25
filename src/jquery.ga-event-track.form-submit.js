@@ -127,7 +127,7 @@
             // Delay form submission, to ensure GA event is tracked.
             setTimeout(function() {
               $this.submit();
-            }, 500);
+            }, 250);
           });
       });
     }
