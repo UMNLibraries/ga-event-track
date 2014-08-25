@@ -8,8 +8,8 @@ A jQuery plugin to capture DOM events and send data regarding the event to Googl
 
 ### Dependencies
 
-* jQuery (tested with 1.10.2)
-* Google Analytics Web Tracking - ga.js
+* jQuery (tested with 1.11.1)
+* Google Analytics Web Tracking - analytics.js
 
 ### Install
 
@@ -105,6 +105,11 @@ Run the test suite
 grunt test
 ```
 
+### Minify Javascript
+
+```bash
+uglifyjs jquery.ga-event-track.core.js jquery.ga-event-track.form-submit.js jquery.ga-event-track.link-click.js --source-map 'jquery.ga-event-track.min.js.map' -o 'jquery.ga-event-track.min.js'
+```
 ### Author
 
 Eric Larson
