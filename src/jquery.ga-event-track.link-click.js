@@ -3,7 +3,6 @@
 // Usage
 //
 //    Include this javascript file in your build.
-//    Initialize the event handler on your page.
 //
 // Caveats
 //
@@ -11,13 +10,18 @@
 //
 // Example
 //
-//    $.ga_event_track('links');
-//    => {"webpage":"/",
+//    a.onclick =>
+//      {
+//        "location":{
+//          "hostname":"drupal.dev",
+//          "pathname":"/"
+//        },
 //        "media":"large",
-//        "href":"/services/borrowing",
-//        "text":"Borrowing Privileges",
-//        "parents":"header-nav|primary-nav|services-nav",
-//        "date":1396469586280}
+//        "href":"researchsupport",
+//        "text":"Researcher",
+//        "parents":"main|featured-items|researcher-support",
+//        "date":1409082445329
+//      }
 //
 // Returns an associative array.
 (function($,GaEventTrack) { "use strict";
@@ -25,9 +29,12 @@
   GaEventTrack.LinkClick = function(element) {
     var $link = $(element);
 
-    // Private: Capture the current URL
-    var webpage = function() {
-      return $(location).attr('pathname'); };
+    // Private: Capture current URL info
+    var location = function() {
+      return {
+        hostname: window.location.hostname,
+        pathname: window.location.pathname
+      }; };
 
     // Private: Capture active media query
     var media = function() {
@@ -56,7 +63,7 @@
 
     return {
       // Public Methods
-      webpage: webpage(),
+      location: location(),
       media: media(),
       href: linkHref(),
       text: linkText(),

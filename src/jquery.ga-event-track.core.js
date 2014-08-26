@@ -1,7 +1,8 @@
-// A jQuery plugin to capture DOM events and send data regarding the event to Google Analytics as a tracked event.
+// A jQuery plugin to capture DOM events and send data regarding the event to
+// Google Analytics as a tracked event.
 //
 // Usage
-// 
+//
 //    Include this javascript file in your build.
 //    Initialize the event handler on your page.
 //
@@ -11,22 +12,39 @@
 //
 // Example
 //
-//    $.ga_event_track('forms');
-//    form.ga-track.onSubmit => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
-//
-//    $.ga_event_track('links');
-//    a.onClick => {"webpage":""
+//    form.ga-track.onSubmit =>
+//      {
+//        "location":{
+//          "hostname":"www.lib.umn.edu",
+//          "pathname":"/"
+//        },
+//        "name":"mncat-discovery",
+//        "inputs":{
+//          "submit":"",
+//          "phrase":"beer"
+//         },
 //        "media":"large",
-//        "href":"/services/borrowing",
-//        "text":"Borrowing Privileges",
-//        "parents":"header-nav|primary-nav|services-nav",
-//        "date":1396469586280}
+//        "date":1409081954817
+//      }
+//
+//    a.onClick =>
+//      {
+//        "location":{
+//          "hostname":"drupal.dev",
+//          "pathname":"/"
+//        },
+//        "media":"large",
+//        "href":"researchsupport",
+//        "text":"Researcher",
+//        "parents":"main|featured-items|researcher-support",
+//        "date":1409082445329
+//      }
 
 var GaEventTrack = (function() {
   var _events = ['forms', 'links'];
   var FormSubmit = {};
   var LinkClick = {};
-  
+
   return {
     _events: _events,
     FormSubmit: FormSubmit,

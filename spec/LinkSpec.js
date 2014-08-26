@@ -3,7 +3,7 @@ var clickData = [
   '_trackEvent',
   'Links',
   'Click',
-  '{"webpage":"/ga-event-track/_SpecRunner.html","href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
+  '{"location":{"hostname":"", "pathname":"/ga-event-track/_SpecRunner.html"},"href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
   ];
 
 describe("Links", function() {
@@ -55,7 +55,9 @@ describe("Links", function() {
 
     it("should match example data", function(){
       labelHash = JSON.parse(labelHash);
-      delete(labelHash['date']);
+
+      delete(labelHash['date']); // never the same
+      delete(labelHash['location']); // hash
 
       $.each(labelHash, function(key,value){
         expect(labelHash[key]).toContain(clickHash[key]);

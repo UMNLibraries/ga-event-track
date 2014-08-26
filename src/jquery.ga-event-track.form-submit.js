@@ -4,7 +4,6 @@
 //
 //    Include this javascript file in your build.
 //    Add the 'ga-track' class attribute to any form you wish to track.
-//    Initialize the event handler on your page.
 //
 // Caveats
 //
@@ -12,14 +11,33 @@
 //
 // Example
 //
-//    $.ga_event_track('forms');
-//    => {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}
+//    form.ga-track.onsubmit =>
+//      {
+//        "location":{
+//          "hostname":"www.lib.umn.edu",
+//          "pathname":"/"
+//        },
+//        "name":"mncat-discovery",
+//        "inputs":{
+//          "submit":"",
+//          "phrase":"beer"
+//         },
+//        "media":"large",
+//        "date":1409081954817
+//      }
 //
 // Returns an associative array.
 (function($,GaEventTrack) { "use strict";
 
   GaEventTrack.FormSubmit = function(element) {
     var $form = $(element);
+
+    // Private: Capture current URL info
+    var location = function() {
+      return {
+        hostname: window.location.hostname,
+        pathname: window.location.pathname
+      }; };
 
     // Private: Capture input name, or default to input type
     var inputName = function(input) {
@@ -73,6 +91,7 @@
 
     return {
       // Public Methods
+      location: location(),
       name: formName(),
       inputs: gatherInputs(),
       media: media(),

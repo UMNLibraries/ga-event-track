@@ -19,7 +19,7 @@ bower install ga-event-track
 
 ### Usage
 
-1. Add the src/jquery.ga-event-track.min.js file to your website
+1. Add the dist folder's jquery.ga-event-track.min.js file to your website
 
   ```html
   <script src="jquery.ga-event-track.min.js"></script>
@@ -37,15 +37,7 @@ bower install ga-event-track
   </form>
   ```
 
-3. Initialize form tracking via:
-
-  ```html
-  <script>
-    $.ga_event_track('forms');
-  </script>
-  ```
-
-4. When the onsubmit event is triggered, you'll capture:
+3. When the form's onsubmit event is triggered, you'll capture:
 
   <table>
     <thead>
@@ -57,19 +49,25 @@ bower install ga-event-track
       <tr>
         <td>Form</td>
         <td>Submit</td>
-        <td>{form: "mncatplus", request: "hemingway", image: "Go", type: "author"}</td>
+        <td>
+        {
+          "location":{
+            "hostname":"www.lib.umn.edu",
+            "pathname":"/"
+            },
+          "name":"mncat-discovery",
+          "inputs":{
+            "submit":"",
+            "phrase":"beer"
+            },
+          "media":"large",
+          "date":1409081954817
+        }
+        </td>
     </tbody>
   </table>
 
-5. Initialize link tracking via:
-
-  ```html
-  <script>
-    $.ga_event_track('links');
-  </script>
-  ```
-
-6. When the onclick event is triggered, you'll capture:
+4. When a link's onclick event is triggered, you'll capture:
 
   <table>
     <thead>
@@ -82,12 +80,18 @@ bower install ga-event-track
         <td>Links</td>
         <td>Click</td>
         <td>
-          {"webpage":"/",
-          "media":"large",
-          "href":"/services/borrowing",
-          "text":"Borrowing Privileges",
-          "parents":"header-nav|primary-nav|services-nav",
-          "date":1396469586280}</td>
+          {
+            "location":{
+              "hostname":"drupal.dev",
+              "pathname":"/"
+              },
+            "media":"large",
+            "href":"researchsupport",
+            "text":"Researcher",
+            "parents":"main|featured-items|researcher-support",
+            "date":1409082445329
+          }
+        </td>
     </tbody>
   </table>
 
@@ -108,7 +112,7 @@ grunt test
 ### Minify Javascript
 
 ```bash
-uglifyjs jquery.ga-event-track.core.js jquery.ga-event-track.form-submit.js jquery.ga-event-track.link-click.js --source-map 'jquery.ga-event-track.min.js.map' -o 'jquery.ga-event-track.min.js'
+uglifyjs src/jquery.ga-event-track.core.js src/jquery.ga-event-track.form-submit.js src/jquery.ga-event-track.link-click.js --source-map "dist/jquery.ga-event-track.min.js.map" -o "dist/jquery.ga-event-track.min.js"
 ```
 ### Author
 
