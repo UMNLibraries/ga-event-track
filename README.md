@@ -25,7 +25,7 @@ bower install ga-event-track
   <script src="jquery.ga-event-track.min.js"></script>
   ```
 
-2. Add an attribute class "ga-track" to any form you wish to track
+2. Forms: Add an attribute class "ga-track" to any form you wish to track
 
   ```html
   <form name="mncatplus" class="ga-track"...>
@@ -67,7 +67,13 @@ bower install ga-event-track
     </tbody>
   </table>
 
-4. When a link's onclick event is triggered, you'll capture:
+4. Links: Add an attribute class "ga-track" to the body tag if you wish to track links
+
+  <body class="ga-track">
+    ...
+  </body>
+
+5. When a link's onclick event is triggered, you'll capture:
 
   <table>
     <thead>

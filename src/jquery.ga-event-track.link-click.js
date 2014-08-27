@@ -75,7 +75,7 @@
   // Public: Init ga link tracking
   $.ga_event_track_links = function (event) {
     if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'links') {
-      return $('a')
+      return $('body.ga-track a')
         .not('.dropdown-toggle')
         .not('[class^="chosen"]')
         .not('[data-toggle^="tab"]')
