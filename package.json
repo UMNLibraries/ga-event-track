@@ -1,7 +1,7 @@
 {
     "name": "ga-event-track"
   , "description": "A jQuery plugin to capture DOM events and send data regarding the event to Google Analytics as a tracked event."
-  , "version": "1.2.2"
+  , "version": "1.2.3"
   , "keywords": ["jquery", "google", "analytics", "Google Analytics"]
   , "homepage": "https://github.com/UMNLibraries/ga-event-track"
   , "author": {
