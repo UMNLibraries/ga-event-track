@@ -26,8 +26,9 @@
 // Returns an associative array.
 (function($,GaEventTrack) { "use strict";
 
-  GaEventTrack.LinkClick = function(element) {
+  GaEventTrack.LinkClick = function(element, event) {
     var $link = $(element);
+    var $event = event;
 
     // Private: Capture current URL info
     var location = function() {
@@ -39,6 +40,13 @@
     // Private: Capture active media query
     var media = function() {
       return $('body').data('media'); };
+
+    // Private: Capture mouse click coordinates
+    var mouse = function() {
+      return {
+        pageX: $event.pageX,
+        pageY: $event.pageY
+      }; };
 
     // Private: Capture anchor href
     var linkHref = function() {
@@ -65,6 +73,7 @@
       // Public Methods
       location: location(),
       media: media(),
+      mouse: mouse(),
       href: linkHref(),
       text: linkText(),
       parents: parents(),
@@ -116,15 +125,20 @@
             $this.unbind('click');
 
             // Capture the data
-            var $linkData = new GaEventTrack.LinkClick($this);
+            var $linkData = new GaEventTrack.LinkClick($this, event);
 
             // Submit the event data
             submitEvent($linkData);
 
-            // Delay link, to ensure GA event is tracked.
-            setTimeout(function() {
-              window.location = $this.attr('href');
-            }, 250);
+            // Follow link unless special class is assigned
+            if ($this.hasClass('ga-no-follow')) {
+              return false;
+            } else {
+              // Delay link, to ensure GA event is tracked.
+              setTimeout(function() {
+                window.location = $this.attr('href');
+              }, 250);
+            }
           });
       });
     }
