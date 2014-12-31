@@ -17,6 +17,10 @@
 //          "pathname":"/"
 //        },
 //        "media":"large",
+//        "mouse":{
+//          "pageX":200,
+//          "pageY":400
+//        },
 //        "href":"researchsupport",
 //        "text":"Researcher",
 //        "parents":"main|featured-items|researcher-support",
@@ -26,9 +30,8 @@
 // Returns an associative array.
 (function($,GaEventTrack) { "use strict";
 
-  GaEventTrack.LinkClick = function(element, event) {
+  GaEventTrack.LinkClick = function(element, pageX, pageY) {
     var $link = $(element);
-    var $event = event;
 
     // Private: Capture current URL info
     var location = function() {
@@ -44,8 +47,8 @@
     // Private: Capture mouse click coordinates
     var mouse = function() {
       return {
-        pageX: $event.pageX,
-        pageY: $event.pageY
+        pageX: pageX,
+        pageY: pageY
       }; };
 
     // Private: Capture anchor href
@@ -125,7 +128,7 @@
             $this.unbind('click');
 
             // Capture the data
-            var $linkData = new GaEventTrack.LinkClick($this, event);
+            var $linkData = new GaEventTrack.LinkClick($this, event.pageX, event.pageY);
 
             // Submit the event data
             submitEvent($linkData);

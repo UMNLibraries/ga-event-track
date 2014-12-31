@@ -3,7 +3,7 @@ var clickData = [
   '_trackEvent',
   'Links',
   'Click',
-  '{"location":{"hostname":"", "pathname":"/ga-event-track/_SpecRunner.html"},"href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
+  '{"location":{"hostname":"", "pathname":"/ga-event-track/_SpecRunner.html"},"mouse":{"pageX":200, "pageY":400}, "href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
   ];
 
 describe("Links", function() {
@@ -58,6 +58,7 @@ describe("Links", function() {
 
       delete(labelHash['date']); // never the same
       delete(labelHash['location']); // hash
+      delete(labelHash['mouse']); // hash
 
       $.each(labelHash, function(key,value){
         expect(labelHash[key]).toContain(clickHash[key]);
