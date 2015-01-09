@@ -8,7 +8,7 @@ A jQuery plugin to capture DOM events and send data regarding the event to Googl
 
 ### Dependencies
 
-* jQuery (tested with 1.11.1)
+* jQuery (tested with ~1.11.0)
 * Google Analytics Web Tracking - analytics.js
 
 ### Install
