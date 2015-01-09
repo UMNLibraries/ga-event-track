@@ -69,9 +69,11 @@ bower install ga-event-track
 
 4. Links: Add an attribute class "ga-track" to the body tag if you wish to track links
 
+  ```html
   <body class="ga-track">
     ...
   </body>
+  ```
 
 5. When a link's onclick event is triggered, you'll capture:
 
