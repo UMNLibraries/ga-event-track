@@ -3,7 +3,7 @@ var clickData = [
   '_trackEvent',
   'Links',
   'Click',
-  '{"location":{"hostname":"", "pathname":"/ga-event-track/_SpecRunner.html"},"mouse":{"pageX":200, "pageY":400}, "href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
+  '{"location":{"hostname":"www.lib.umn.edu", "pathname":"/"},"mouse":{"pageX":200, "pageY":400}, "href":"/services/borrowing","text":"Borrowing Privileges","parents":"jasmine-fixtures|header-nav|primary-nav|services-nav","date":1396971582012}'
   ];
 
 describe("Links", function() {
