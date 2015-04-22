@@ -102,7 +102,7 @@
   // Public: Init ga form tracking
   $.ga_event_track_forms = function (event) {
     if (($.inArray(event,GaEventTrack._events)!=-1) && event === 'forms') {
-      return $('form.ga-track').each(function(idx, element) {
+      return $('body.ga-track-forms form').each(function(idx, element) {
         // Private: Submit the event to GA for tracking
         var submitEvent = function(formData) {
 

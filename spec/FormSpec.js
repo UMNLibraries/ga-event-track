@@ -8,19 +8,19 @@ describe("Forms", function() {
     });
 
     it("should capture event", function() {
-      var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
-      $('form.ga-track').submit(function(event){
+      var spyEvent = spyOnEvent($('body.ga-track-forms form'), 'submit');
+      $('form').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveBeenTriggered();
       });
     });
 
     it("should push event to GA", function(){
-      var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
+      var spyEvent = spyOnEvent($('body.ga-track-forms form'), 'submit');
       expect(typeof ga === 'function').toBe(true);
 
       var label = ['_trackEvent', 'Forms', 'Submit', {form: "mncatplus", request: "hemingway", image: "Go", type: "author"}]
-      $('form.ga-track').submit(function(event){
+      $('form').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveBeenTriggered();
         expect(_gaq).toEqual(label);
@@ -35,17 +35,17 @@ describe("Forms", function() {
     });
 
     it("should have two forms to observe", function() {
-      expect($('form.ga-track').length).toEqual(2);
+      expect($('div.ga-track-forms form').length).toEqual(2);
     });
 
     it("should capture event for both mncatplus and gsearch", function() {
-      var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
-      $('form[name=mncatplug].ga-track').submit(function(event){
+      var spyEvent = spyOnEvent($('body.ga-track-forms form'), 'submit');
+      $('form[name=mncatplug]').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveBeenTriggered();
       });
 
-      $('form[name=gsearch].ga-track').submit(function(event){
+      $('form[name=gsearch]').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveBeenTriggered();
       });
@@ -59,11 +59,11 @@ describe("Forms", function() {
     });
 
     it("should have no forms to observe", function() {
-      expect($('form.ga-track').length).toEqual(0);
+      expect($('body.ga-track-forms form').length).toEqual(0);
     });
 
     it("should not capture event", function() {
-      var spyEvent = spyOnEvent($('form.ga-track'), 'submit');
+      var spyEvent = spyOnEvent($('body.ga-track-forms form'), 'submit');
       $('form[name=mncatplus]').submit(function(event){
         event.preventDefault();
         expect(spyEvent).toHaveNotBeenTriggered();

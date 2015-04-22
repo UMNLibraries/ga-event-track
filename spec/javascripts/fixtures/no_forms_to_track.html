@@ -1,13 +1,23 @@
-<form name="mncat">
-  <input name="request" type="text" value="Kerouac">
-  <input type="image" src="/foo/bar.png">
-  <input type="radio" name="type" value="keyword">
-  <input type="radio" name="type" value="title">
-  <input type="radio" name="type" value="author" checked="checked">
-</form>
+<html>
+  <head>
+    <script src="/ga-event-track/spec/javascripts/vendor/jquery-1.11.1.min.js"></script>
+    <script src="/ga-event-track/spec/javascripts/vendor/ga_spoof.js"></script>
+    <script src="/ga-event-track/src/jquery.ga-event-track.core.js"></script>
+    <script src="/ga-event-track/src/jquery.ga-event-track.form-submit.js"></script>
+  </head>
+  <body data-media="large">
+    <form name="mncat">
+      <input name="request" type="text" value="Kerouac">
+      <input type="image" src="/foo/bar.png">
+      <input type="radio" name="type" value="keyword">
+      <input type="radio" name="type" value="title">
+      <input type="radio" name="type" value="author" checked="checked">
+    </form>
 
-<form name="gsearch">
-  <label for="search_field">Search Library web site</label>
-  <input type="text" id="search_field" name="q" title="Search text">   
-  <input class="search_btn" src="/Images/search_button.gif">
-</form>
+    <form name="gsearch">
+      <label for="search_field">Search Library web site</label>
+      <input type="text" id="search_field" name="q" title="Search text">
+      <input class="search_btn" src="/Images/search_button.gif">
+    </form>
+  </body>
+</html>
