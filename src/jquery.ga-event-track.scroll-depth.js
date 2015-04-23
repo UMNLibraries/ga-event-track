@@ -14,7 +14,7 @@
     minHeight: 0,
     elements: [],
     percentage: true,
-    userTiming: true,
+    userTiming: false,
     pixelDepth: false,
     nonInteraction: true
   };
