@@ -77,14 +77,14 @@
       // Tracking by decile
       return {
         '10%' : parseInt(docHeight * 0.10, 10),
-        '20%' : parseInt(docHeight * 0.20, 20),
-        '30%' : parseInt(docHeight * 0.30, 30),
-        '40%' : parseInt(docHeight * 0.40, 40),
-        '50%' : parseInt(docHeight * 0.50, 50),
-        '60%' : parseInt(docHeight * 0.60, 60),
-        '70%' : parseInt(docHeight * 0.70, 70),
-        '80%' : parseInt(docHeight * 0.80, 80),
-        '90%' : parseInt(docHeight * 0.90, 90),
+        '20%' : parseInt(docHeight * 0.20, 10),
+        '30%' : parseInt(docHeight * 0.30, 10),
+        '40%' : parseInt(docHeight * 0.40, 10),
+        '50%' : parseInt(docHeight * 0.50, 10),
+        '60%' : parseInt(docHeight * 0.60, 10),
+        '70%' : parseInt(docHeight * 0.70, 10),
+        '80%' : parseInt(docHeight * 0.80, 10),
+        '90%' : parseInt(docHeight * 0.90, 10),
         // 1px cushion to trigger 100% event in iOS
         '100%': docHeight - 5
       };
