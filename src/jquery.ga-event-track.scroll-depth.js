@@ -4,6 +4,8 @@
  * Copyright (c) 2014 Rob Flaherty (@robflaherty)
  * Licensed under the MIT and GPL licenses.
  */
+
+// Modified to remove legacy GA conditional branches - EWL 2015.04.21
 ;(function ( $, window, document, undefined ) {
 
   "use strict";
@@ -24,8 +26,6 @@
 
   /*
    * Plugin
-   *
-   * Modified to remove legacy GA conditional branches - EWL 2015.04.21
    */
 
   $.ga_event_track_scroll = function(event,options) {
