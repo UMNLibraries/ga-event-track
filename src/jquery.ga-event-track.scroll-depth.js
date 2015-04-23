@@ -15,7 +15,7 @@
     elements: [],
     percentage: true,
     userTiming: true,
-    pixelDepth: true,
+    pixelDepth: false,
     nonInteraction: true
   };
 
@@ -74,10 +74,17 @@
     }
 
     function calculateMarks(docHeight) {
+      // Tracking by decile
       return {
-        '25%' : parseInt(docHeight * 0.25, 10),
-        '50%' : parseInt(docHeight * 0.50, 10),
-        '75%' : parseInt(docHeight * 0.75, 10),
+        '10%' : parseInt(docHeight * 0.10, 10),
+        '20%' : parseInt(docHeight * 0.20, 20),
+        '30%' : parseInt(docHeight * 0.30, 30),
+        '40%' : parseInt(docHeight * 0.40, 40),
+        '50%' : parseInt(docHeight * 0.50, 50),
+        '60%' : parseInt(docHeight * 0.60, 60),
+        '70%' : parseInt(docHeight * 0.70, 70),
+        '80%' : parseInt(docHeight * 0.80, 80),
+        '90%' : parseInt(docHeight * 0.90, 90),
         // 1px cushion to trigger 100% event in iOS
         '100%': docHeight - 5
       };
