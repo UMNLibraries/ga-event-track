@@ -41,13 +41,15 @@
 //      }
 
 var GaEventTrack = (function() {
-  var _events = ['forms', 'links'];
+  var _events = ['forms', 'links', 'scrolldepth'];
   var FormSubmit = {};
   var LinkClick = {};
+  var ScrollDepth = {};
 
   return {
     _events: _events,
     FormSubmit: FormSubmit,
-    LinkClick: LinkClick
+    LinkClick: LinkClick,
+    ScrollDepth: ScrollDepth
   };
 }(GaEventTrack));

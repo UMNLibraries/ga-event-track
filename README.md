@@ -25,16 +25,20 @@ bower install ga-event-track
   <script src="jquery.ga-event-track.min.js"></script>
   ```
 
-2. Forms: Add an attribute class "ga-track" to any form you wish to track
+#### Forms
+
+2. Forms: On the body element, add a "ga-track-forms" class attribute to any webpage with forms you wish to track.
 
   ```html
-  <form name="mncatplus" class="ga-track"...>
-    <input name="request" type="text"/>
-    <input type="image" src="../path"/>
-    <input type="radio" name="type" value="keyword"/>
-    <input type="radio" name="type" value="title"/>
-    <input type="radio" name="type" value="author"/>
-  </form>
+  <body class="ga-track-forms">
+  ...
+    <form name="mncatplus"...>
+      <input name="request" type="text"/>
+      <input type="image" src="../path"/>
+      <input type="radio" name="type" value="keyword"/>
+      <input type="radio" name="type" value="title"/>
+      <input type="radio" name="type" value="author"/>
+    </form>
   ```
 
 3. When the form's onsubmit event is triggered, you'll capture:
@@ -67,10 +71,12 @@ bower install ga-event-track
     </tbody>
   </table>
 
-4. Links: Add an attribute class "ga-track" to the body tag if you wish to track links
+#### Links
+
+4. Links: On the body element, add a "ga-track-links" class attribute if you wish to track links.
 
   ```html
-  <body class="ga-track">
+  <body class="ga-track-links">
     ...
   </body>
   ```
@@ -107,6 +113,18 @@ bower install ga-event-track
     </tbody>
   </table>
 
+#### Scroll Depth
+
+6. Scroll Depth: On the body element, add a "ga-track-scroll" class attribute if you wish to capture scroll depth.
+
+  ```html
+  <body class="ga-track-scroll">
+    ...
+  </body>
+  ```
+
+7. When a user scrolls down the page, you'll collect scroll depth events.
+
 ### Tests
 
 Install the project's dependencies
@@ -124,7 +142,7 @@ grunt test
 ### Minify Javascript
 
 ```bash
-uglifyjs src/jquery.ga-event-track.core.js src/jquery.ga-event-track.form-submit.js src/jquery.ga-event-track.link-click.js --source-map "dist/jquery.ga-event-track.min.js.map" -o "dist/jquery.ga-event-track.min.js"
+uglifyjs src/* --source-map "dist/jquery.ga-event-track.min.js.map" -o "dist/jquery.ga-event-track.min.js"
 ```
 ### Author
 
