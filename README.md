@@ -25,7 +25,9 @@ bower install ga-event-track
   <script src="jquery.ga-event-track.min.js"></script>
   ```
 
-2. Forms: Add an attribute class "ga-track-forms" to any form you wish to track
+#### Forms
+
+2. Forms: On the body element, add a "ga-track-forms" class attribute to any webpage with forms you wish to track.
 
   ```html
   <body class="ga-track-forms">
@@ -69,7 +71,9 @@ bower install ga-event-track
     </tbody>
   </table>
 
-4. Links: Add an attribute class "ga-track-links" to the body tag if you wish to track links
+#### Links
+
+4. Links: On the body element, add a "ga-track-links" class attribute if you wish to track links.
 
   ```html
   <body class="ga-track-links">
@@ -109,13 +113,17 @@ bower install ga-event-track
     </tbody>
   </table>
 
-6. Scroll Depth: Add an attribute class "ga-track-scroll" to the body tag if you wish to capture scroll depth
+#### Scroll Depth
+
+6. Scroll Depth: On the body element, add a "ga-track-scroll" class attribute if you wish to capture scroll depth.
 
   ```html
   <body class="ga-track-scroll">
     ...
   </body>
   ```
+
+7. When a user scrolls down the page, you'll collect scroll depth events.
 
 ### Tests
 
@@ -134,7 +142,7 @@ grunt test
 ### Minify Javascript
 
 ```bash
-uglifyjs src/jquery.ga-event-track.core.js src/jquery.ga-event-track.form-submit.js src/jquery.ga-event-track.link-click.js --source-map "dist/jquery.ga-event-track.min.js.map" -o "dist/jquery.ga-event-track.min.js"
+uglifyjs src/* --source-map "dist/jquery.ga-event-track.min.js.map" -o "dist/jquery.ga-event-track.min.js"
 ```
 ### Author
 
