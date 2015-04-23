@@ -25,16 +25,18 @@ bower install ga-event-track
   <script src="jquery.ga-event-track.min.js"></script>
   ```
 
-2. Forms: Add an attribute class "ga-track" to any form you wish to track
+2. Forms: Add an attribute class "ga-track-forms" to any form you wish to track
 
   ```html
-  <form name="mncatplus" class="ga-track"...>
-    <input name="request" type="text"/>
-    <input type="image" src="../path"/>
-    <input type="radio" name="type" value="keyword"/>
-    <input type="radio" name="type" value="title"/>
-    <input type="radio" name="type" value="author"/>
-  </form>
+  <body class="ga-track-forms">
+  ...
+    <form name="mncatplus"...>
+      <input name="request" type="text"/>
+      <input type="image" src="../path"/>
+      <input type="radio" name="type" value="keyword"/>
+      <input type="radio" name="type" value="title"/>
+      <input type="radio" name="type" value="author"/>
+    </form>
   ```
 
 3. When the form's onsubmit event is triggered, you'll capture:
@@ -67,10 +69,10 @@ bower install ga-event-track
     </tbody>
   </table>
 
-4. Links: Add an attribute class "ga-track" to the body tag if you wish to track links
+4. Links: Add an attribute class "ga-track-links" to the body tag if you wish to track links
 
   ```html
-  <body class="ga-track">
+  <body class="ga-track-links">
     ...
   </body>
   ```
@@ -106,6 +108,14 @@ bower install ga-event-track
         </td>
     </tbody>
   </table>
+
+6. Scroll Depth: Add an attribute class "ga-track-scroll" to the body tag if you wish to capture scroll depth
+
+  ```html
+  <body class="ga-track-scroll">
+    ...
+  </body>
+  ```
 
 ### Tests
 
