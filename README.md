@@ -150,4 +150,4 @@ Eric Larson
 
 ### Copyright and License
 
-Copyright (c) 2013-2015 Regents of the University of Minnesota - The MIT License (MIT)
+Copyright (c) 2013-2016 Regents of the University of Minnesota - The MIT License (MIT)
