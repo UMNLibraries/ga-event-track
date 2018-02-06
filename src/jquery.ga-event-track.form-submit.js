@@ -41,7 +41,11 @@
 
     // Private: Capture input name, or default to input type
     var inputName = function(input) {
-          return input.attr('name') || input.attr('type'); };
+          return input.attr('name') || inputType(input); };
+
+    // Private: Capture input type
+    var inputType = function(input) {
+          return input.attr('type'); };
 
     // Private: Capture input value, handle radio buttons properly
     var inputValue = function(input) {
@@ -77,7 +81,9 @@
           var $formData = {};
           $(':input', $form).each(function() {
             var $input = $(this);
-            $formData[inputName($input)] = inputValue($input);
+            if (inputType($input) != 'password') {
+              $formData[inputName($input)] = inputValue($input);
+            }
           });
           return $formData; };
 
