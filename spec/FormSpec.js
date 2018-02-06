@@ -52,6 +52,24 @@ describe("Forms", function() {
     });
   });
 
+  describe("when a form contains a password field", function() {
+    beforeEach(function() {
+      loadFixtures('form_with_password.html');
+      $.ga_event_track_forms('forms');
+    });
+
+    it("should push event to GA excluding the password", function(){
+      var spyEvent = spyOnEvent($('body.ga-track-forms form'), 'submit');
+
+      var plabel = ['_trackEvent', 'Forms', 'Submit', {form: "passwordform", request: "Kerouac"}];
+      $('form').submit(function(event){
+        event.preventDefault();
+        expect(spyEvent).toHaveBeenTriggered();
+        expect(_gaq).toEqual(plabel);
+      });
+    });
+  });
+
   describe("when no forms to track has been loaded", function() {
     beforeEach(function() {
       loadFixtures('no_forms_to_track.html');

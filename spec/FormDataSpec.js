@@ -14,6 +14,21 @@ describe("GaEventTrack.FormSubmit", function() {
     });
   });
 
+  describe("when loading the password form fixture", function() {
+    beforeEach(function() {
+      loadFixtures('form_with_password.html');
+      GaTrackFormData = new GaEventTrack.FormSubmit($('form'));
+    });
+
+    it("should have a query value of Kerouac", function() {
+      expect(GaTrackFormData.inputs['request']).toEqual('Kerouac');
+    });
+
+    it("should not have a privateval password input", function() {
+      expect(GaTrackFormData.inputs.privateval).not.toBeDefined();
+    });
+  });
+
   describe("when loading the book form fixture", function() {
     beforeEach(function() {
       loadFixtures('book_form.html');
