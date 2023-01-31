@@ -1,6 +1,9 @@
 ga-event-track
 ====================
 
+## DEPRECATED
+This project is no longer maintained.
+
 [![Build Status](https://travis-ci.org/UMNLibraries/ga-event-track.png?branch=master)](https://travis-ci.org/UMNLibraries/ga-event-track)
 [![Code Climate](https://codeclimate.com/github/UMNLibraries/ga-event-track.png)](https://codeclimate.com/github/UMNLibraries/ga-event-track)
 
